@@ -2,7 +2,7 @@
   "name": "letter-animation",
   "version": "0.1.0",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "@babel/cli": "^7.5.0",
     "lodash": "^4.17.14",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
