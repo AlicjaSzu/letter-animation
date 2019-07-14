@@ -1,4 +1,4 @@
-# simple-component-library
+# letter-animation-library
 
 A library of React components created using `create-react-app`.
 
