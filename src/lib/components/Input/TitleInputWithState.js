@@ -1,14 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { TitleInput } from "./TitleInput";
 
-export const TitleInputWithState = ({ title = null, ...rest }) => {
-  const [value, setValue] = useState(title);
+export const TitleInputWithState = ({ children = null, ...rest }) => {
+  const [value, setValue] = useState(children);
 
   useEffect(() => {
-    setValue(title);
-  }, [title]);
+    setValue(children);
+  }, [children]);
 
   const onChange = useCallback(value => setValue(value), []);
 
-  return <TitleInput title={value} {...rest} onChangeHandler={onChange} />;
+  return <TitleInput title={value} onChangeHandler={onChange} {...rest} />;
 };

@@ -11,10 +11,10 @@ export const TitleInput = ({
   onChangeHandler,
   title = null
 }) => {
-  const [focusClass, setFocusClass] = useState("");
+  const [focusClass, setFocusClass] = useState(false);
 
-  const addFocusClass = useCallback(() => setFocusClass("focus"), []);
-  const removeFocusClass = useCallback(() => setFocusClass(""), []);
+  const addFocusClass = useCallback(() => setFocusClass(true), []);
+  const removeFocusClass = useCallback(() => setFocusClass(false), []);
 
   const updateTitle = e => {
     onChangeHandler && onChangeHandler(e.target.value);
@@ -37,12 +37,7 @@ export const TitleInput = ({
 
   return (
     <S.TitleInput>
-      <AnimatedTitle
-        focus={focusClass}
-        animationType={animationType}
-        dynamicType={true}
-        inputStyle
-      >
+      <AnimatedTitle focus={focusClass} animationType={animationType}>
         {title}
       </AnimatedTitle>
       {renderInput()}

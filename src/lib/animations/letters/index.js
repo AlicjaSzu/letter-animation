@@ -1,7 +1,7 @@
 import { css } from "styled-components";
 import animationTypes from "./types";
 
-const letterAnimation = (type, index, letterDelay = 0, inOut = "in") => {
+const letterAnimation = ({ type, index, letterDelay = 0, inOut = "in" }) => {
   const anim = animationTypes[type]
     ? animationTypes[type](index, letterDelay)[inOut]
     : null;

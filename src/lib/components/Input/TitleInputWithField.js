@@ -5,27 +5,27 @@ import AnimatedTitle from "../Title";
 import { Input } from "./Input";
 import * as S from "./style";
 
-export const TitleInputWithField = ({ animationType, name, title = null }) => {
-  const [value, setValue] = useState(title);
+export const TitleInputWithField = ({
+  animationType = "lettero4",
+  delay = 200,
+  name,
+  children
+}) => {
+  const [value, setValue] = useState(children);
 
   useEffect(() => {
-    setValue(title);
-  }, [title]);
+    setValue(children);
+  }, [children]);
 
-  const [focusClass, setFocusClass] = useState("");
+  const [focus, setFocus] = useState(false);
 
-  const addFocusClass = useCallback(() => setFocusClass("focus"), []);
-  const removeFocusClass = useCallback(() => setFocusClass(""), []);
+  const addFocusClass = useCallback(() => setFocus(true), []);
+  const removeFocusClass = useCallback(() => setFocus(false), []);
   const handleChange = useCallback(value => setValue(value), []);
 
   return (
     <S.TitleInput>
-      <AnimatedTitle
-        focus={focusClass}
-        animationType={animationType}
-        dynamicType={true}
-        inputStyle
-      >
+      <AnimatedTitle delay={delay} focus={focus} animationType={animationType}>
         {value}
       </AnimatedTitle>
       <Field

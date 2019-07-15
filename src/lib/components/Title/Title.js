@@ -144,7 +144,7 @@ const renderText = ({
 const AnimatedTitle = ({
   delay = 200,
   duration = 500,
-  focus,
+  focus = false,
   children,
   animationType = "lettero1",
   iconType = "edit"
@@ -178,7 +178,7 @@ export default AnimatedTitle;
 AnimatedTitle.propTypes = {
   children: string,
   animationType: string,
-  focus: string,
+  focus: bool,
   inputStyle: bool,
   iconType: string,
   delay: number
