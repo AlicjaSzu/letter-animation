@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { TitleInput } from "./TitleInput";
 
-export const TitleInputWithState = ({ children = null, ...rest }) => {
+export const AnimatedInputWithState = ({ children = null, ...rest }) => {
   const [value, setValue] = useState(children);
 
   useEffect(() => {

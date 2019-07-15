@@ -4,7 +4,7 @@ import { Field } from "redux-form";
 import AnimatedTitle from "../Title";
 import { Input } from "./Input";
 import * as S from "./style";
-export var TitleInputWithField = function TitleInputWithField(_ref) {
+export var AnimatedInputWithField = function AnimatedInputWithField(_ref) {
   var _ref$animationType = _ref.animationType,
       animationType = _ref$animationType === void 0 ? "lettero4" : _ref$animationType,
       _ref$delay = _ref.delay,

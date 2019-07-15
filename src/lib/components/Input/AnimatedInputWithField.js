@@ -5,7 +5,7 @@ import AnimatedTitle from "../Title";
 import { Input } from "./Input";
 import * as S from "./style";
 
-export const TitleInputWithField = ({
+export const AnimatedInputWithField = ({
   animationType = "lettero4",
   delay = 200,
   name,

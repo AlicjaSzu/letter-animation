@@ -2,7 +2,7 @@ import _slicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
 import _objectWithoutProperties from "@babel/runtime/helpers/esm/objectWithoutProperties";
 import React, { useCallback, useEffect, useState } from "react";
 import { TitleInput } from "./TitleInput";
-export var TitleInputWithState = function TitleInputWithState(_ref) {
+export var AnimatedInputWithState = function AnimatedInputWithState(_ref) {
   var _ref$children = _ref.children,
       children = _ref$children === void 0 ? null : _ref$children,
       rest = _objectWithoutProperties(_ref, ["children"]);
