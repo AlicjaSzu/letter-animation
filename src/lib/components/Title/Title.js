@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { map, isEqual, isEmpty, last, number, sumBy } from "lodash";
-import { bool, string } from "prop-types";
+import { map, isEqual, isEmpty, last, sumBy } from "lodash";
+import { bool, number, string, oneOf } from "prop-types";
 import uniqid from "uniqid";
 import FontAwesome from "react-fontawesome";
 
@@ -33,10 +33,10 @@ const shouldRenderIn = (title, prevTitle) => {
   return isEmpty(prevTitle) || titleLength >= prevTitleLength;
 };
 
-const renderIcon = ({ iconType, focus, iconDelay, duration = 600 }) => (
+const renderIcon = ({ iconType, focus, iconDelay, duration = 600, type }) => (
   <Fade
-    in={!focus}
-    timeout={iconDelay ? iconDelay + duration : 200}
+    in={!focus && type === "input"}
+    timeout={iconDelay || 200}
     delay={iconDelay}
     appear
     unmountOnExit
@@ -119,7 +119,8 @@ const renderText = ({
   focus,
   iconType,
   prevTitle,
-  title
+  title,
+  type
 }) => {
   const renderedFirstTime = !!prevTitle;
   const animationIn = shouldRenderIn(title, prevTitle);
@@ -136,7 +137,7 @@ const renderText = ({
         prevTitle
       })}
       {renderCursor(focus)}
-      {renderIcon({ iconType, focus, iconDelay, duration })}
+      {renderIcon({ iconType, focus, iconDelay, duration, type })}
     </S.Word>
   );
 };
@@ -147,7 +148,8 @@ const AnimatedTitle = ({
   focus = false,
   children,
   animationType = "lettero1",
-  iconType = "edit"
+  iconType = "edit",
+  type = "text"
 }) => {
   const title = convertStringToList(children);
   const prevTitle = useRef(null);
@@ -165,6 +167,7 @@ const AnimatedTitle = ({
         focus,
         iconType,
         title,
+        type,
         prevTitle: prevTitle.current
       })}
     </S.Title>
@@ -181,5 +184,6 @@ AnimatedTitle.propTypes = {
   focus: bool,
   inputStyle: bool,
   iconType: string,
-  delay: number
+  delay: number,
+  type: oneOf(["input", "text"])
 };

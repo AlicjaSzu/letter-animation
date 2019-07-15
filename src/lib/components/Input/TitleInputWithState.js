@@ -10,5 +10,12 @@ export const TitleInputWithState = ({ children = null, ...rest }) => {
 
   const onChange = useCallback(value => setValue(value), []);
 
-  return <TitleInput title={value} onChangeHandler={onChange} {...rest} />;
+  return (
+    <TitleInput
+      title={value}
+      onChangeHandler={onChange}
+      type="input"
+      {...rest}
+    />
+  );
 };

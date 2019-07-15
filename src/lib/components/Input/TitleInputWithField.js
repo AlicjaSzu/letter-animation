@@ -25,7 +25,12 @@ export const TitleInputWithField = ({
 
   return (
     <S.TitleInput>
-      <AnimatedTitle delay={delay} focus={focus} animationType={animationType}>
+      <AnimatedTitle
+        delay={delay}
+        focus={focus}
+        animationType={animationType}
+        type="input"
+      >
         {value}
       </AnimatedTitle>
       <Field
