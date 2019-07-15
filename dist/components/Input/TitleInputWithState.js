@@ -20,6 +20,7 @@ export var TitleInputWithState = function TitleInputWithState(_ref) {
   }, []);
   return React.createElement(TitleInput, Object.assign({
     title: value,
-    onChangeHandler: onChange
+    onChangeHandler: onChange,
+    type: "input"
   }, rest));
 };

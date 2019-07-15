@@ -38,7 +38,8 @@ export var TitleInputWithField = function TitleInputWithField(_ref) {
   return React.createElement(S.TitleInput, null, React.createElement(AnimatedTitle, {
     delay: delay,
     focus: focus,
-    animationType: animationType
+    animationType: animationType,
+    type: "input"
   }, value), React.createElement(Field, {
     component: Input,
     name: name,

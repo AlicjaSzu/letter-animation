@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { map, isEqual, isEmpty, last, number, sumBy } from "lodash";
+import { map, isEqual, isEmpty, last, sumBy } from "lodash";
 import uniqid from "uniqid";
 import FontAwesome from "react-fontawesome";
 import { Letter } from "../Letter";
@@ -38,10 +38,11 @@ var renderIcon = function renderIcon(_ref2) {
       focus = _ref2.focus,
       iconDelay = _ref2.iconDelay,
       _ref2$duration = _ref2.duration,
-      duration = _ref2$duration === void 0 ? 600 : _ref2$duration;
+      duration = _ref2$duration === void 0 ? 600 : _ref2$duration,
+      type = _ref2.type;
   return React.createElement(Fade, {
-    in: !focus,
-    timeout: iconDelay ? iconDelay + duration : 200,
+    in: !focus && type === "input",
+    timeout: iconDelay || 200,
     delay: iconDelay,
     appear: true,
     unmountOnExit: true
@@ -132,7 +133,8 @@ var renderText = function renderText(_ref6) {
       focus = _ref6.focus,
       iconType = _ref6.iconType,
       prevTitle = _ref6.prevTitle,
-      title = _ref6.title;
+      title = _ref6.title,
+      type = _ref6.type;
   var renderedFirstTime = !!prevTitle;
   var animationIn = shouldRenderIn(title, prevTitle);
   var iconDelay = renderedFirstTime ? 0 : sumBy(title, "length") * 250;
@@ -147,7 +149,8 @@ var renderText = function renderText(_ref6) {
     iconType: iconType,
     focus: focus,
     iconDelay: iconDelay,
-    duration: duration
+    duration: duration,
+    type: type
   }));
 };
 
@@ -162,7 +165,9 @@ var AnimatedTitle = function AnimatedTitle(_ref7) {
       _ref7$animationType = _ref7.animationType,
       animationType = _ref7$animationType === void 0 ? "lettero1" : _ref7$animationType,
       _ref7$iconType = _ref7.iconType,
-      iconType = _ref7$iconType === void 0 ? "edit" : _ref7$iconType;
+      iconType = _ref7$iconType === void 0 ? "edit" : _ref7$iconType,
+      _ref7$type = _ref7.type,
+      type = _ref7$type === void 0 ? "text" : _ref7$type;
   var title = convertStringToList(children);
   var prevTitle = useRef(null);
   useEffect(function () {
@@ -175,6 +180,7 @@ var AnimatedTitle = function AnimatedTitle(_ref7) {
     focus: focus,
     iconType: iconType,
     title: title,
+    type: type,
     prevTitle: prevTitle.current
   })) : renderEmpty(focus);
 };
